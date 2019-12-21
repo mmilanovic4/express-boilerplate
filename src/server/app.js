@@ -12,6 +12,10 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
+// App settings
+app.set('view engine', 'pug');
+app.set('views', path.resolve('views'));
+
 // Built-in middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,13 +31,13 @@ app.use('/test', testController);
 
 // HTTP 404
 app.use(async (req, res, next) => {
-	res.status(404).sendFile(path.resolve('html', '404.html'));
+	res.status(404).render('404', { title: '404' });
 });
 
 // HTTP 500
 app.use(async (err, req, res, next) => {
 	console.error(err.stack);
-	res.status(500).sendFile(path.resolve('html', '500.html'));
+	res.status(500).render('500', { title: '500' });
 });
 
 // Start the server
