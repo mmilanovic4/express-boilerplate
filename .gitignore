@@ -5,3 +5,4 @@ package-lock.json
 # Bundled files
 dist
 stats.json
+ssl/*[.crt, .key]

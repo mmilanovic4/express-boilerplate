@@ -2,6 +2,8 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
+import fs from 'fs';
+import https from 'https';
 import path from 'path';
 
 import homeController from './controllers/home';
@@ -13,6 +15,7 @@ const app = express();
 const port = process.env.PORT;
 
 // App settings
+app.disable('x-powered-by');
 app.set('view engine', 'pug');
 app.set('views', path.resolve('views'));
 
@@ -41,6 +44,18 @@ app.use(async (err, req, res, next) => {
 });
 
 // Start the server
-app.listen(port, () => {
-	console.log(`App listening on port ${port}...`);
-});
+const server =
+	process.env.SSL_KEY &&
+	process.env.SSL_CERT &&
+	fs.existsSync(process.env.SSL_KEY) &&
+	fs.existsSync(process.env.SSL_CERT)
+		? https.createServer(
+				{
+					key: fs.readFileSync(process.env.SSL_KEY),
+					cert: fs.readFileSync(process.env.SSL_CERT)
+				},
+				app
+		  )
+		: app;
+
+server.listen(port, () => console.log(`App listening on port ${port}...`));
