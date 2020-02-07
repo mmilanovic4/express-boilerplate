@@ -18,7 +18,10 @@ module.exports = env => {
 			]
 		},
 		resolve: {
-			extensions: ['.js']
+			extensions: ['.js'],
+			alias: {
+				Server: path.resolve(__dirname, 'src', 'server')
+			}
 		},
 		output: {
 			filename: '[name].js',

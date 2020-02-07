@@ -6,8 +6,8 @@ import fs from 'fs';
 import https from 'https';
 import path from 'path';
 
-import homeController from './controllers/home';
-import testController from './controllers/test';
+import homeController from 'Server/controllers/home';
+import testController from 'Server/controllers/test';
 
 dotenv.config();
 
