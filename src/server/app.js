@@ -1,5 +1,4 @@
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import fs from 'fs';
@@ -7,7 +6,7 @@ import https from 'https';
 import path from 'path';
 
 import homeController from 'Server/controllers/home';
-import testController from 'Server/controllers/test';
+import apiController from 'Server/controllers/api';
 
 dotenv.config();
 
@@ -26,11 +25,10 @@ app.use('/static', express.static('static'));
 
 // Third-party middleware
 app.use(cookieParser());
-app.use(cors());
 
 // Controllers
 app.use('/', homeController);
-app.use('/test', testController);
+app.use('/api', apiController);
 
 // HTTP 404
 app.use(async (req, res, next) => {

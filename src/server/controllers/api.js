@@ -13,44 +13,35 @@ const helper = req => {
 	};
 };
 
+// GET
 router.get('/get', async (req, res) => {
-	const response = {
+	res.json({
 		query: req.query,
 		...helper(req)
-	};
-	res.json(response);
+	});
 });
 
-router.post('/post', async (req, res) => {
-	const response = {
-		body: req.body,
-		...helper(req)
-	};
-	res.json(response);
-});
-
-router.post('/post/json', async (req, res) => {
-	const response = {
-		body: req.body,
-		...helper(req)
-	};
-	res.json(response);
-});
-
-router.get('/params/user/:user', async (req, res) => {
-	const response = {
+// REST-style URL
+router.get('/user/:user', async (req, res) => {
+	res.json({
 		params: req.params,
 		...helper(req)
-	};
-	res.json(response);
+	});
+});
+
+// POST [application/x-www-form-urlencoded, application/json]
+router.post('/post', async (req, res) => {
+	res.json({
+		body: req.body,
+		...helper(req)
+	});
 });
 
 router.get('/cookies', async (req, res) => {
-	const response = {
+	res.json({
 		cookies: req.cookies,
 		...helper(req)
-	};
-	res.json(response);
+	});
 });
 
 router.get('/500', async (req, res) => {
