@@ -21,8 +21,3 @@ echo ""
 curl http://localhost:1234/api/post --header "Content-Type: application/json" --data '{"fn":"Милош","ln":"Милановић"}'
 echo ""
 echo ""
-
-# HTTP cookie
-curl http://localhost:1234/api/cookies --cookie "user=mmilanovic"
-echo ""
-echo ""

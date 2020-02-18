@@ -1,4 +1,3 @@
-import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import express from 'express';
 import fs from 'fs';
@@ -18,13 +17,10 @@ app.disable('x-powered-by');
 app.set('view engine', 'pug');
 app.set('views', path.resolve('views'));
 
-// Built-in middleware
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/static', express.static('static'));
-
-// Third-party middleware
-app.use(cookieParser());
 
 // Controllers
 app.use('/', homeController);

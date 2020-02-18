@@ -37,13 +37,6 @@ router.post('/post', async (req, res) => {
 	});
 });
 
-router.get('/cookies', async (req, res) => {
-	res.json({
-		cookies: req.cookies,
-		...helper(req)
-	});
-});
-
 router.get('/500', async (req, res) => {
 	res.sendFile('/nepostojeci-fajl'); // Trigger error intentionally
 });
