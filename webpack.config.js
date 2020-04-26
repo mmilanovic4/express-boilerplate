@@ -18,8 +18,9 @@ module.exports = env => {
 			]
 		},
 		resolve: {
-			extensions: ['.js'],
+			extensions: ['.js', '.jsx'],
 			alias: {
+				Client: path.resolve(__dirname, 'src', 'client'),
 				Server: path.resolve(__dirname, 'src', 'server')
 			}
 		},
@@ -31,7 +32,7 @@ module.exports = env => {
 			rules: [
 				// Babel
 				{
-					test: /\.js$/,
+					test: /\.jsx?$/,
 					use: 'babel-loader',
 					exclude: /node_modules/
 				}
