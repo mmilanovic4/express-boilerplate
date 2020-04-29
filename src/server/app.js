@@ -20,6 +20,7 @@ app.set('views', path.resolve('views'));
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/assets', express.static('assets'));
 app.use('/static', express.static('static'));
 
 // Controllers

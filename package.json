@@ -10,11 +10,13 @@
 	"scripts": {
 		"clean": "rm -rf dist/*",
 		"format": "prettier --write src/**/*.{js,jsx,css,json} *.{js,json}",
-		"build:dev": "webpack --progress",
-		"build:prod": "webpack --env.prod --progress",
+		"build:client:dev": "webpack --progress",
+		"build:server:dev": "webpack --env.server --progress",
+		"build:client:prod": "webpack --env.prod --progress",
+		"build:server:prod": "webpack --env.prod --env.server --progress",
 		"build:stats": "webpack --env.prod --progress --profile --json > stats.json",
-		"start:dev": "nodemon dist/server.js",
-		"start:prod": "NODE_ENV=production node dist/server.js"
+		"start:dev": "cd dist && nodemon server.js",
+		"start:prod": "cd dist && NODE_ENV=production node server.js"
 	},
 	"repository": {
 		"type": "git",
@@ -22,12 +24,19 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.9.0",
+		"@babel/plugin-proposal-class-properties": "^7.8.3",
 		"@babel/preset-env": "^7.9.5",
 		"@babel/preset-react": "^7.9.4",
 		"babel-loader": "^8.1.0",
 		"copy-webpack-plugin": "^5.1.1",
+		"css-loader": "^3.5.3",
+		"file-loader": "^6.0.0",
+		"mini-css-extract-plugin": "^0.9.0",
 		"nodemon": "^2.0.3",
+		"optimize-css-assets-webpack-plugin": "^5.0.3",
 		"prettier": "^2.0.5",
+		"style-loader": "^1.2.1",
+		"terser-webpack-plugin": "^2.3.6",
 		"webpack": "^4.43.0",
 		"webpack-cli": "^3.3.11",
 		"webpack-node-externals": "^1.7.2"

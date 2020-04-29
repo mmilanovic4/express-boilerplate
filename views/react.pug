@@ -1,4 +1,8 @@
 extends includes/layout.pug
 
+block head
+	link(rel="stylesheet", href="/assets/style.css")
+	script(src="/assets/client.js", defer)
+
 block content
-	div !{dom}
+	div(id="root") !{dom}

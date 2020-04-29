@@ -2,7 +2,7 @@ import express from 'express';
 
 const router = express.Router();
 
-const helper = req => {
+const helper = (req) => {
 	return {
 		headers: req.headers,
 		method: req.method,
