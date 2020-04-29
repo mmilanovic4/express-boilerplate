@@ -14,7 +14,8 @@
 		"build:server:dev": "webpack --env.server --progress",
 		"build:client:prod": "webpack --env.prod --progress",
 		"build:server:prod": "webpack --env.prod --env.server --progress",
-		"build:stats": "webpack --env.prod --progress --profile --json > stats.json",
+		"build:client:stats": "webpack --env.prod --progress --profile --json > stats.json",
+		"build:server:stats": "webpack --env.prod --env.server --progress --profile --json > stats.json",
 		"start:dev": "cd dist && nodemon server.js",
 		"start:prod": "cd dist && NODE_ENV=production node server.js"
 	},

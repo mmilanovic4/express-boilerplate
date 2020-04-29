@@ -18,33 +18,36 @@ npm install
 
 ```
 npm run clean
-npm run build:prod
+npm run build:client:prod
+npm run build:server:prod
 npm run start:prod
 ```
 
 ## Development
 
-You can use this boilerplate with your own server (e.g. Express), then you can just run build script with development flag:
-
 ```
 # First terminal
-npm run build:dev
+npm run build:client:dev
 
 # Second terminal
+npm run build:server:dev
+
+# Third terminal
 npm run start:dev
 ```
 
-Differences between `build:prod` and `build:dev`:
+Differences between PROD and DEV:
 
-- `webpack.mode` is set to `production` if started via `build:prod` or to `development` if started via `build:dev`
-- `webpack.watch` is set to `true` if started via `build:dev`
+- `webpack.mode` is set to `production` if started in PROD or to `development` if started in DEV
+- `webpack.watch` is set to `true` if started in DEV
 
 ## Profiling
 
 To profile your JavaScript application simply run:
 
 ```
-npm run build:stats
+npm run build:client:stats
+npm run build:server:stats
 ```
 
 Now `stats.json` file is generated in your project's root directory and you can open it with [webpack analyse](https://github.com/webpack/analyse) or some [other build analysis tool](https://survivejs.com/webpack/optimizing/build-analysis/).
@@ -63,6 +66,10 @@ openssl req -x509 -out localhost.crt -keyout localhost.key \
 ```
 
 You can then configure your local web server with localhost.crt and localhost.key, and install localhost.crt in your list of locally trusted roots.
+
+## React Server-side rendering
+
+React SSR is available if you're building your UI with React. If you need React CSR take a look at [React boilerplate](https://github.com/mmilanovic4/react-boilerplate).
 
 ## Work in progress
 
