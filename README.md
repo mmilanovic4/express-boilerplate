@@ -2,6 +2,10 @@
 	<img src="static/img/logo.png" alt="Express boilerplate">
 </p>
 
+<p align="center">
+	<img src="https://img.shields.io/github/license/mmilanovic4/express-boilerplate" alt="License">
+</p>
+
 # Overview
 
 A simple boilerplate for creating Express applications.
