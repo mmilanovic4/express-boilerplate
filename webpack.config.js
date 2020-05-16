@@ -33,26 +33,31 @@ module.exports = (env) => {
 	const isProd = (env && env.prod) === true;
 
 	const config = (env && env.server) === true ? server : client;
-	const plugins = (env && env.server) === true ? [] : [
-		new MiniCssExtractPlugin({
-			filename: 'assets/style.css',
-			chunkFilename: '[id].css'
-		}),
-		new CopyPlugin([
-			{
-				from: path.resolve(__dirname, 'static'),
-				to: path.resolve(__dirname, 'dist', 'static')
-			},
-			{
-				from: path.resolve(__dirname, 'views'),
-				to: path.resolve(__dirname, 'dist', 'views')
-			},
-			{
-				from: path.resolve(__dirname, '.env'),
-				to: path.resolve(__dirname, 'dist')
-			}
-		])
-	];
+	const plugins =
+		(env && env.server) === true
+			? []
+			: [
+					new MiniCssExtractPlugin({
+						filename: 'assets/style.css',
+						chunkFilename: '[id].css'
+					}),
+					new CopyPlugin({
+						patterns: [
+							{
+								from: path.resolve(__dirname, 'static'),
+								to: path.resolve(__dirname, 'dist', 'static')
+							},
+							{
+								from: path.resolve(__dirname, 'views'),
+								to: path.resolve(__dirname, 'dist', 'views')
+							},
+							{
+								from: path.resolve(__dirname, '.env'),
+								to: path.resolve(__dirname, 'dist')
+							}
+						]
+					})
+			  ];
 
 	return {
 		mode: isProd ? 'production' : 'development',
