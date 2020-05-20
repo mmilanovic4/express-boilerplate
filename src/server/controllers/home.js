@@ -3,7 +3,7 @@ import path from 'path';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import App from 'Client/pages/Index';
+import App from 'Client/App';
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/react-hello', async (req, res) => {
-	const el = React.createElement(App, {});
+	const el = React.createElement(App);
 	const dom = ReactDOMServer.renderToString(el);
 
 	res.render('react', {
