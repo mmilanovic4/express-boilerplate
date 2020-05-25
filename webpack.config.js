@@ -21,6 +21,8 @@ const client = {
 	target: 'web',
 	entry: {
 		'assets/client': [
+			'core-js/stable',
+			'regenerator-runtime/runtime',
 			'./src/client/index.js'
 		]
 	}
