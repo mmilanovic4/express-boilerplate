@@ -3,11 +3,18 @@ import React from 'react';
 const Checkbox = (props) => {
 	const { id, label, value, handleChange } = props;
 
+	React.useEffect(() => {
+		console.log('componentDidMount');
+		return () => {
+			console.log('componentWillUnmount');
+		};
+	}, []);
+
 	return (
-		<React.Fragment>
+		<>
 			<label htmlFor={id} style={{ userSelect: 'none' }}>{label}</label>
 			<input type="checkbox" id={id} value={value} onChange={handleChange} />
-		</React.Fragment>
+		</>
 	);
 };
 
@@ -32,9 +39,11 @@ export default () => {
 			<div style={padded}>
 				<button onClick={() => setCounter(counter + 1)}>Increment</button>
 			</div>
-			<div style={padded}>
-				<CheckboxMemo id="cb" label="Toggle checkbox" value={checked} handleChange={() => toggleCheckbox(!checked)} />
-			</div>
+			{counter < 5 &&			
+				<div style={padded}>
+					<CheckboxMemo id="cb" label="Toggle checkbox" value={checked} handleChange={() => toggleCheckbox(!checked)} />
+				</div>
+			}
 		</React.Fragment>
 	);
 };
